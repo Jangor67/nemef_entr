@@ -4,10 +4,8 @@
 D1 = 62;     // diameter knop (mm)
 D2 = 42;     // diameter onderkant
 L = 124;      // totale lengte  
-H = 12;      // hoogte elektronische module (mm)
+H = 15;      // hoogte elektronische module (mm)
 wall = 2.0;  // wanddikte (mm)
-clear = 0.4; // speling tussen elektronica en behuizing (mm)
-lip = 2.0;   // rand rondom deksel (mm)
 
 ////////////// afgeleide maten //////////////
 wall2 = wall * 2;
@@ -22,7 +20,7 @@ $fn=60;
 ////////////// modules //////////////
 
 module behuizing() {
-  scale([1,1,0.5]) {
+  scale([1,1,H/R1]) {
     difference() {
       sphere(d=D1);
       // remove inside
@@ -60,4 +58,4 @@ module behuizing() {
 
 // Helpful: export separate pieces by uncommenting:
 behuizing();
-translate([D1,-L/2,0]) rotate([0,180,180]) behuizing();
+translate([D1,-L/2,-H]) rotate([0,180,180]) behuizing();
